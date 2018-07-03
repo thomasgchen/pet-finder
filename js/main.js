@@ -45,8 +45,24 @@ function showAnimals(pets) {
     div.innerHTML = `
       <div class="row">
         <div class="col-sm-6">
-          <h4>${pet.name.$t} (${pet.age.$t})</h4>
-          <p class="text-secondary">${pet.breeds.breed.$t}</p>
+          <h4>${pet.name.$t}</h4>
+          ${
+            pet.breeds.breed.$t
+              ? `<p style="margin-bottom:0;" class="text-secondary">Breed: ${
+                  pet.breeds.breed.$t
+                }</p>`
+              : ``
+          }
+          ${
+            pet.sex.$t
+              ? `<p style="margin-bottom:0;" class="text-secondary">Gender: ${
+                  pet.sex.$t
+                }</p>`
+              : ``
+          }
+          ${
+            pet.age.$t ? `<p class="text-secondary">Age: ${pet.age.$t}</p>` : ``
+          }
           ${
             pet.contact.address1.$t
               ? `<p>${pet.contact.address1.$t} ${pet.contact.city.$t} ${
@@ -56,7 +72,14 @@ function showAnimals(pets) {
                   pet.contact.zip.$t
                 }</p>`
           }
-
+          ${
+            pet.description.$t
+              ? `<details style="margin-bottom:1.5rem;"><summary>More Info</summary><p>${
+                  pet.description.$t
+                }</p></details>`
+              : ``
+          }
+ 
           <ul class="list-group">
           ${
             pet.contact.phone.$t
